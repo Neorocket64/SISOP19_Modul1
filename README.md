@@ -1,4 +1,4 @@
-# SISOP 2019 : Modul 1 [Soal Shift]
+# SISOP 2019 : Modul 1 [Soal Shift] Kelompok D8
 
 ## #3 Membuat file berisi random generated string
 ### Pembuatan
