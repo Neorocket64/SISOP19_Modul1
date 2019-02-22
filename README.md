@@ -3,7 +3,9 @@
 ## #3 Membuat file berisi random generated string
 ### Pembuatan
 Pertama, generate random string sampai 12 karakter menggunakan;
+
 `dd if=/dev/urandom|tr -dc A-Za-z0-9|head -c 12`
+
 yang akan disimpan melalui sebuah variabel.
 
 Kemudian, supaya jenis karakter; `lowercase, uppercase, dan angka` ada dalam string tersebut,
@@ -17,6 +19,7 @@ Loop ini berisi salah satu variabel, yaitu `i`, untuk menyimpan angka yang dituj
 
 ### Kendala
 Untuk kasus seperti berikut;
+
 `f1 | [] | f3 | f4`
 
 Karena ini, hanya akan diperiksa file sebelumnya (f1) dan kemudian membuat file yang belum ada (f2), tetapi tidak memeriksa file selanjutnya.
