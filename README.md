@@ -4,7 +4,8 @@
 
 * Shellscript:
 
-`#!bin/bash
+`
+#!bin/bash
 
 nomor=1
 
@@ -65,13 +66,13 @@ printf "\n"
 `
 
 ### Penjelasan
-a. Memanfaatkan awk -F agar dapat menggunakan ‘,’ sebagai pemisah string.
+A. Memanfaatkan awk -F agar dapat menggunakan ‘,’ sebagai pemisah string.
 
 Lalu data yang diambil hanya data dari tahun 2012 dengan if ($7 == 2012).
 
 Tiap negara di kolom pertama, Quantitynya dijumlahkan. Lalu print jumlah i(x) dengan state (x).
 
-b. Ditambahkan filter state dalam pemfilteran tahun if ($7 == 2012 && $1 = $result ) , agar hasilnya sesuai dengan poin a. 
+B. Ditambahkan filter state dalam pemfilteran tahun if ($7 == 2012 && $1 = $result ) , agar hasilnya sesuai dengan poin a. 
 
 Setiap Product Line ($4) dijumlahkan Quantitynya.
 
@@ -83,7 +84,7 @@ Lalu print 3 data di array pertama.
 
 IFS digunakan agar data di array dapat disimpan perbarisnya.
 
-c. Ditambahkan filter Product Line {if ($1 == "United States" && $7 == 2012 && ($4 == "Personal Accessories" || $4 == "Camping Equipment" || $4 == "Outdoor Protection" ))} untuk menyesuaikan dengar array di poin b.
+C. Ditambahkan filter Product Line {if ($1 == "United States" && $7 == 2012 && ($4 == "Personal Accessories" || $4 == "Camping Equipment" || $4 == "Outdoor Protection" ))} untuk menyesuaikan dengar array di poin b.
 
 Kemudian diurutkan dan diambil 3 paling atas.
 
