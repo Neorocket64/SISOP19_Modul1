@@ -2,7 +2,9 @@
 
 ## #3 Membuat file berisi random generated string
 ### Pembuatan
-Pertama, generate random string sampai 12 karakter menggunakan 'dd if=/dev/urandom|tr -dc A-Za-z0-9|head -c 12' yang akan disimpan melalui sebuah variabel.
+Pertama, generate random string sampai 12 karakter menggunakan;
+>dd if=/dev/urandom|tr -dc A-Za-z0-9|head -c 12
+yang akan disimpan melalui sebuah variabel.
 Kemudian, supaya jenis karakter; 'lowercase, uppercase, dan angka' ada dalam string tersebut, membuat variabel masing-masing jenis karakter.
 Diperiksa seluruh karakter dalam string, setiap ada salah satu jenis dari 3 tersebut, maka value variabelnya bertambah 1
 Setelah itu, masuk bagian cek string pada file lain. Untuk ini, menambah variabel pembanding yang mengambil nilai file lain dalam loop.
