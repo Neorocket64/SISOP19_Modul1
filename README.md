@@ -4,20 +4,17 @@
 
 * Shellscript:
 
-`
+```bash
 #!bin/bash
 
 nomor=1
 
 for file in /home/bryan/sisop/Modul_1/no1/nature/*.jpg
-  do
-    
+  do    
     base64 -d $file | xxd -r > /home/bryan/sisop/Modul_1/no1/hasil/"hasil"$nomor".jpg"
-    
     let nomor++
-  
   done
-`
+```
 
 * Crontab
 
@@ -31,11 +28,10 @@ for file in /home/bryan/sisop/Modul_1/no1/nature/*.jpg
 * Variabel nomor akan digunakan untuk menamai file yang sudah didekripsi. Proses dekripsi memanfaatkan hexdump (xxd) dan base64. Tiap file yang ada di folder /home/bryan/sisop/Modul_1/no1/nature/*.jpg akan didecode dengan base64, kemudian dikembalikan dengan hexdump agar bisa dibuka, kemudian dimasukkan kedalam folder “hasil”.
 
 ## #2 Membuat Laporan
-`
+```bash
 #!/bin/bash
 
 printf "soal 2a\nNegara dengan penjualan terbanyak ditahun 2012 : "
-
 awk -F ',' '{if ($7 == 2012) {i[$1]+=$10;}} END {for (x in i) print i[x] "," x}' WA_Sales_Products_2012-14.csv | sort -nr | head -1 | awk -F ',' '{print $2}'
 
 printf "\n"
@@ -43,15 +39,10 @@ printf "\n"
 #======================================================================#
 
 printf "soal 2b\nProduct line dengan penjualan terbanyak : \n"
-
 IFS=$'\n'
-
 arr=( $( awk -F ',' '{if ($7 == 2012 && $1 = $result ) {i[$4]+=$10;}} END {for (x in i) print i[x] "," x;}' WA_Sales_Products_2012-14.csv | sort -nr | head -3 | awk -F ',' '{print $2}' ) )
-
 echo "${arr[0]}"
-
 echo "${arr[1]}"
-
 echo "${arr[2]}"
 
 printf "\n"
@@ -59,34 +50,17 @@ printf "\n"
 #======================================================================#
 
 printf "soal 2c\nProduct dengan penjualan terbanayak : \n"
-
 awk -F ',' '{if ($1 == "United States" && $7 == 2012 && ($4 == "Personal Accessories" || $4 == "Camping Equipment" || $4 == "Outdoor Protection" )) {i[$6]+=$10;}} END {for (x in i) print i[x] "," x;}' WA_Sales_Products_2012-14.csv | sort -nr | head -3 | awk -F ',' '{print $2}'
 
 printf "\n"
-`
+```
 
 ### Penjelasan
-A. Memanfaatkan awk -F agar dapat menggunakan ‘,’ sebagai pemisah string.
+* [A] Memanfaatkan awk -F agar dapat menggunakan ‘,’ sebagai pemisah string. Lalu data yang diambil hanya data dari tahun 2012 dengan if ($7 == 2012). Tiap negara di kolom pertama, Quantitynya dijumlahkan. Lalu print jumlah i(x) dengan state (x).
 
-Lalu data yang diambil hanya data dari tahun 2012 dengan if ($7 == 2012).
+* [B] Ditambahkan filter state dalam pemfilteran tahun if ($7 == 2012 && $1 = $result ) , agar hasilnya sesuai dengan poin a. Setiap Product Line ($4) dijumlahkan Quantitynya. Print total i[x] dan product linenya. Hasilnya diletakkan didalam array. Lalu print 3 data di array pertama. IFS digunakan agar data di array dapat disimpan perbarisnya.
 
-Tiap negara di kolom pertama, Quantitynya dijumlahkan. Lalu print jumlah i(x) dengan state (x).
-
-B. Ditambahkan filter state dalam pemfilteran tahun if ($7 == 2012 && $1 = $result ) , agar hasilnya sesuai dengan poin a. 
-
-Setiap Product Line ($4) dijumlahkan Quantitynya.
-
-Print total i[x] dan product linenya.
-
-Hasilnya diletakkan didalam array.
-
-Lalu print 3 data di array pertama.
-
-IFS digunakan agar data di array dapat disimpan perbarisnya.
-
-C. Ditambahkan filter Product Line {if ($1 == "United States" && $7 == 2012 && ($4 == "Personal Accessories" || $4 == "Camping Equipment" || $4 == "Outdoor Protection" ))} untuk menyesuaikan dengar array di poin b.
-
-Kemudian diurutkan dan diambil 3 paling atas.
+* [C] Ditambahkan filter Product Line {if ($1 == "United States" && $7 == 2012 && ($4 == "Personal Accessories" || $4 == "Camping Equipment" || $4 == "Outdoor Protection" ))} untuk menyesuaikan dengar array di poin b. Kemudian diurutkan dan diambil 3 paling atas.
 
 ## #3 Membuat file berisi random generated string
 ### Pembuatan
@@ -117,15 +91,15 @@ Untuk sekarang, tidak menemukan solusi
 ## #4 Logging, Encrypt, dan Decrypt
 ### Encrypt
 Untuk konversi karakter menuju ASCII dan sebaliknya, menggunakan;
-
->ascii2chr() {
+```bash
+ascii2chr() {
 	[ "$1" -lt 256 ] || return 1
 	printf "\\$(printf '%03o' "$1")"
 }
 chr2ascii() {
 	LC_CTYPE=C printf '%d' "$1"
 }
-
+```
 Ada 3 percabangan untuk selanjutnya,
 * Jika alfabet lowercase
 * Jika alfabet Uppercase
