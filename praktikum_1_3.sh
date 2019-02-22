@@ -7,7 +7,7 @@ do
 	while
 		pwd="$(dd if=/dev/urandom|tr -dc A-Za-z0-9|head -c 12)"
 		#do random, translate within non-unicode, sampai 12
-		echo "$pwd"
+		#echo "$pwd"
 		agk=0 lo=0 up=0 
 		for (( i=0; i<${#pwd}; i++));
 		do
@@ -24,7 +24,7 @@ do
 				let up=$up+1
 			fi
 		done
-		echo "$agk $lo $up"
+		#echo "$agk $lo $up"
 		#cek jika semua elemen sudah ada (lowercase, uppercase, dan angka)
 		[ $agk -lt "1" ] || [ $lo -lt "1" ] || [ $up -lt "1" ]
 	do :;
