@@ -5,14 +5,22 @@
 Pertama, generate random string sampai 12 karakter menggunakan;
 `dd if=/dev/urandom|tr -dc A-Za-z0-9|head -c 12`
 yang akan disimpan melalui sebuah variabel.
-Kemudian, supaya jenis karakter; `lowercase, uppercase, dan angka` ada dalam string tersebut, membuat variabel masing-masing jenis karakter.
-Diperiksa seluruh karakter dalam string, setiap ada salah satu jenis dari 3 tersebut, maka value variabelnya bertambah 1
+
+Kemudian, supaya jenis karakter; `lowercase, uppercase, dan angka` ada dalam string tersebut,
+membuat variabel masing-masing jenis karakter.
+
+Diperiksa seluruh karakter dalam string, setiap ada salah satu jenis dari 3 tersebut, maka value variabelnya bertambah
+
 Setelah itu, masuk bagian cek string pada file lain. Untuk ini, menambah variabel pembanding yang mengambil nilai file lain dalam loop.
+
 Loop ini berisi salah satu variabel, yaitu `i`, untuk menyimpan angka yang ditujukan pada file lain `text"i".txt` -> `text1.txt`. Jika tidak menemukan file dalam angka tersebut, maka akan dibuatkan file dengan angka tersebut.
+
 ### Kendala
 Untuk kasus seperti berikut;
 `f1 | [] | f3 | f4`
+
 Karena ini, hanya akan diperiksa file sebelumnya (f1) dan kemudian membuat file yang belum ada (f2), tetapi tidak memeriksa file selanjutnya.
+
 Untuk sekarang, tidak menemukan solusi
 
 ## #4 Logging, Encrypt, dan Decrypt
@@ -40,7 +48,9 @@ Khusus untuk 2 pertama, menggunakan variabel yang berisi hasil konversi `chr2asc
 5. Merubah kembali menjadi karakter menggunakan `ascii2chr`
 
 Karakter akan dimasukkan menuju sebuah variabel.
+
 Proses ini berlangsung hingga akhir dari file tersebut.
+
 Setelah itu, variabel yang menyimpan hasil enkripsi akan dioutput di suatu folder
 
 ### Decrypt
