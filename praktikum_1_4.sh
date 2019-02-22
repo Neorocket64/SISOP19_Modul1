@@ -16,7 +16,7 @@ ascii2chr() {
 }
 #convert karakter menjadi ASCII table
 chr2ascii() {
-	LC_CTYPE=C printf '%d' "$1"
+	LC_CTYPE=C printf '%d' "'$1"
 }
 
 isi=$(<'/var/log/syslog')
@@ -28,34 +28,35 @@ do
 	#echo "$asc2"
 
 	#For lowercase
-  	if [ $asc2 -le 122 ] && [ $asc2 -ge 97 ] then
- 	   	let "asc2=asc2-96"
+  	if [ $asc2 -le 122 ] && [ $asc2 -ge 97 ]
+  		then
+ 	   	let "asc2=asc2-97"
  	   	let "asc2=asc2+jam"
  		#something similar happen
 		if [ $asc2 -gt 25 ]
 	 	then
 	     		let "asc2=asc2-25"
 	    fi
-    	let "asc2=asc2+96"
+    	let "asc2=asc2+97"
     	enproc="$enproc`ascii2chr $asc2`"
 
 	#For Uppercase
-	elif [ $asc2 -le 90 ] && [ $asc2 -ge 65 ] then
-		let "asc2=asc2-64"
+	elif [ $asc2 -le 90 ] && [ $asc2 -ge 65 ]
+		then
+		let "asc2=asc2-65"
 		let "asc2=asc2+jam"
 		#after z, back to a
 	   	if [ $asc2 -gt 25 ]
 	    	then
-	      		let "asc2=asc2-25"
+	      	let "asc2=asc2-25"
 	    fi
-		let "asc2=asc2+64"
+		let "asc2=asc2+65"
     	enproc="$enproc`ascii2chr $asc2`"
   	
   	#For Non-Alpabhet
   	else
-  		enproc="$enproc${isi:i:1};"
+  		enproc="$enproc${isi:i:1}"
 
 	echo $enproc > "$procfile".txt
 	fi
 done
-#echo $enproc

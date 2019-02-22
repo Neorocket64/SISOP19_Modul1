@@ -64,7 +64,12 @@ Berbanding balik prosesnya dengan enkripsi pada jenis alfabet, menggunakan nama 
 4. Value ditambah lagi dengan (ascii alfabet pertama jenis tersebut - 1) 
 5. Merubah kembali menjadi karakter menggunakan 'ascii2chr'
 
+### CRONTAB
+
+`* 1 * * *`
+
 ### Kendala
+
 Untuk konversi, menggunakan sumber lain yang belum dipelajari sepenuhnya kodingan tersebut.
 
 ### Sumber :
@@ -78,3 +83,7 @@ Untuk konversi, menggunakan sumber lain yang belum dipelajari sepenuhnya kodinga
 > awk '!/sudo/' && '/cron/'
 * Membatasi field setiap baris menggunakan NF
 > awk 'NF < 13' >> /home/ugarpac/modul1
+
+### CRONTAB
+
+`2-30/6 * * * *`

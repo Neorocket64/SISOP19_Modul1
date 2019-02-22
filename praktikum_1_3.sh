@@ -12,15 +12,18 @@ do
 		for (( i=0; i<${#pwd}; i++));
 		do
 			#menghitung jenis karakter dalam 1 string
-			if [[ ${pwd:i:1} =~ [0-9]+$ ]] then
+			if [[ ${pwd:i:1} =~ [0-9]+$ ]]
+				then
 				let agk=$agk+1
 			fi
 
-			if [[ ${pwd:i:1} =~ [a-z]+$ ]] then
+			if [[ ${pwd:i:1} =~ [a-z]+$ ]]
+				then
 				let lo=$lo+1
 			fi
 
-			if [[ ${pwd:i:1} =~ [A-Z]+$ ]] then
+			if [[ ${pwd:i:1} =~ [A-Z]+$ ]]
+				then
 				let up=$up+1
 			fi
 		done
@@ -37,13 +40,15 @@ do
 	while [ -s "$file$i.txt" ]
 	do
 		banding=$(<$file$i.txt)
-		if test "$banding" = "$pwd" then
+		if test "$banding" = "$pwd"
+			then
 			flag=1
 			break
 		fi
 		let i=$i+1
 	done
-	if [[ flag = 1 ]] then 
+	if [[ flag = 1 ]]
+		then 
 		echo "generated ini sama dengan file$i !"
 		continue
 	fi
